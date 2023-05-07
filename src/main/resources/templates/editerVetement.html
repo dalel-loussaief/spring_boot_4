@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+ layout:decorator="template"> 
+<link rel="stylesheet" type="text/css" 
+href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+<head>
+<meta charset="utf-8">
+<title>Ajout des Produits</title>
+</head>
+<body>
+<div th:replace="template"></div>
+<div layout:fragment="Mycontent">
+<div class="container mt-5">
+<div class="card">
+ <div class="card-header">
+ Modifier des Vetements
+ </div>
+ <div class="card-body">
+<form th:action="@{saveVetement}" method="post">
+<div class="form-group">
+<label class="control-label" hidden>ID vetement :</label>
+ <input type="hidden" name="idvetement" class="form-control"
+th:value="${vetement.idvetement}" />
+</div>
+<div class="form-group">
+<label class="control-label">Nom vetement :</label>
+<input type="text" name="nomvetement" class="form-control"
+th:value="${vetement.nomvetement}" />
+<span th:errors= ${vetement.nomvetement} class="text-danger">
+</span>
+</div>
+<div class="form-group">
+<label class="control-label">Prix vetement :</label>
+ <input type="text" name="prixvetement" class="form-control"
+th:value="${vetement.prixvetement}" />
+ <span th:errors=${vetement.prixvetement} class="text-danger">
+</span>
+</div>
+<div class="form-group">
+<label class="control-label">date production :</label>
+<input type="date" name="dateprod" class="form-control" 
+th:value="${vetement.dateprod}"/>
+<span th:errors=${vetement.dateprod} class="text-danger">
+</span>
+</div>
+<div>
+<button type="submit" class="btn btn-primary">Valider</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
